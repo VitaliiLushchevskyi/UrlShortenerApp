@@ -1,0 +1,16 @@
+﻿@page
+@model AboutModel
+@using Microsoft.AspNetCore.Authorization
+
+<h1>About Our URL Shortener</h1>
+
+<p>@Model.Description</p>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <form method="post">
+        <textarea asp-for="Description" rows="5" cols="50"></textarea>
+        <br />
+        <button type="submit">Update</button>
+    </form>
+}
